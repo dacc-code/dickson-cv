@@ -1,0 +1,5 @@
+node_modules/
+*.zip
+*.py
+proyecto_bd.txt
+taller-backend-dickson-carrillo/
