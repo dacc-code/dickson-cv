@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Required files
+        run: |
+          test -f index.html || (echo "falta index.html" && exit 1)
+          test -f Dockerfile || (echo "falta Dockerfile" && exit 1)
+          test -f docker-compose.yml || (echo "falta docker-compose.yml" && exit 1)
+
+      - name: Dockerfile sanity (nginx base + COPY + EXPOSE)
+        run: |
+          grep -q "^FROM nginx:" Dockerfile || (echo "base nginx ausente" && exit 1)
+          grep -q "COPY index.html" Dockerfile || (echo "COPY ausente" && exit 1)
+          grep -q "EXPOSE 80" Dockerfile || (echo "EXPOSE ausente" && exit 1)
+
+      - name: Docker build
+        run: docker build -t dickson-cv:ci .
