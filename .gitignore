@@ -3,3 +3,18 @@ node_modules/
 *.py
 proyecto_bd.txt
 taller-backend-dickson-carrillo/
+
+# Entorno y secretos (nunca commitear)
+.env
+.env.*
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.vscode/
+.idea/
+
+# Docker / docs generados
+docs/screenshot.png
