@@ -54,7 +54,7 @@ No hay package manager, linter ni test runner configurados.
 ## Testing / Linting / Build
 
 - Sin tests automatizados. Verificación mínima: build de Docker + `curl` HTTP 200 (ver README).
-- Si se agrega CI, debe hacer: `docker build` + chequeo HTTP 200. No agregar frameworks de test sin aprobación.
+- CI: `.github/workflows/ci.yml` (archivos + Dockerfile + `docker build`). TODO: chequeo HTTP 200 post-build. No agregar frameworks de test sin aprobación.
 - No ejecutar builds pesados si `/` tiene poco espacio (estaba al 87% el 2026-09-10).
 
 ## Deployment
